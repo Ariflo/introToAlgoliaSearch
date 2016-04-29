@@ -2,6 +2,7 @@
 <label class="searchName">Search by Category</label>
 <select ng-model="category">
 	<option></option>
+      <option disabled selected value> -- Sort Options -- </option>
 	<option ng-repeat="teaCategory in final track by $index " value="{{teaCategory}}">{{teaCategory}}</option>
 </select> 
 
