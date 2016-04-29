@@ -1,0 +1,65 @@
+.col-xs-12{
+	background-color: orange;
+	color: white;
+	text-align: center;
+}
+
+h1{
+	color: orange;
+}
+
+h2{
+	float:left;
+}
+
+label{
+	display: inline;
+}
+
+.pricer{
+	float: right;
+}
+
+.teaItem{
+	display: block;
+}
+
+.imgData{
+	width: 10%;
+}
+
+.teaData{
+	width: 100%;
+}
+
+.btn{
+	float:  right;
+	margin-bottom: 2%;
+}
+
+.quantityLabel{
+	display: inline;
+	margin-left: 65%;
+}
+
+.amt{
+	display: inline;
+}
+
+.searchName{
+	display: inline;
+	margin-left: 1%;
+}
+
+.data{
+	display: inline;
+	margin-left: 1px; 
+}
+
+.priceLabel{
+	margin-left: 70%; 
+}
+
+.ordTotal{
+	float:right;
+}

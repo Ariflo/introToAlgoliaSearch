@@ -1,0 +1,38 @@
+{
+  "name": "shopping_cart_app",
+  "version": "0.0.0",
+  "description": "angular shopping cart",
+  "private": true,
+  "scripts": {
+    "start": "node .server.js"
+  },
+  "engines": {
+    "node": "4.2.6"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.1",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "knex": "^0.9.0",
+    "locus": "^1.2.0",
+    "method-override": "^2.3.5",
+    "morgan": "^1.6.1",
+    "pg": "^4.4.4",
+    "serve-favicon": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Ariflo/angularIntroWork.git"
+  },
+  "author": "Ari",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ariflo/angularIntroWork/issues"
+  },
+  "homepage": "https://github.com/Ariflo/angularIntroWork#readme"
+}

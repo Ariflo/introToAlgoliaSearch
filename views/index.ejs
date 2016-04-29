@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app ="cartApp">
+<head>
+	<title>Angular Cart App</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.js"></script>
+	<script src="/js/app.js" type="text/javascript"></script>
+	<script src="/js/services.js" type="text/javascript"></script>
+	<script src="/js/directives.js" type="text/javascript"></script>
+	<script src="/js/controllers.js" type="text/javascript"></script>
+	<script src="/js/filters.js" type="text/javascript"></script>
+	
+</head>
+<body>
+<div class="col-xs-12">Guranteed Awesome!</div>
+<h1>Welcome to MEAN Tea!</h1>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/#/">Home</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">About <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+	<div ng-view></div>
+</body>
+</html>
