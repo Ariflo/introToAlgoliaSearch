@@ -2,10 +2,20 @@
 	background-color: orange;
 	color: white;
 	text-align: center;
+	padding: 2em;
+	font-size: 30px;
+	float: left;
+	
+	  top: 0;
+	  left: 0;
+	  z-index: 999;
+	  width: 100%;
+	  margin-bottom: 1em;
 }
 
 h1{
-	color: orange;
+	text-align: center;
+	color: white;
 }
 
 h2{
