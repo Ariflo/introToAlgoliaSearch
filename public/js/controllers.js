@@ -1,49 +1,33 @@
 cartApp.controller('HomeController', ['$scope', '$http', '$parse', '$location', 'passCartService', 'algolia'
 			         ,function($scope, $http, $parse, $location, passCartService, algolia) {
 
-	$http.get('/api/products').then(function(data){
-		$scope.teas = data.data;
-		$scope.teaArr = [];
-		$scope.final = [];
+	$scope.query = '';
+	$scope.hits = [];
+	$scope.categories = [];
 
-		$scope.query = '';
-		$scope.hits = [];
+	var client = algolia.Client('W8I2YD0GJC', '861d0757703675d68f5a0f915072381b');
+	var index = client.initIndex('tea_shop');
+	index.clearCache();
 
-		var client = algolia.Client('W8I2YD0GJC', '861d0757703675d68f5a0f915072381b');
-		var index = client.initIndex('tea_shop');
-		index.clearCache();
+	$scope.algoliaSearch = function (){
 
-		$scope.algoliaSearch = function (){
+		index.search($scope.query)
+		.then(function searchSuccess(content) {
+		     	$scope.teas = content.hits;
 
-			index.search($scope.query)
-			.then(function searchSuccess(content) {
-			     	$scope.hits = content.hits;
-
-			}, function searchFailure(err) {
-			     	console.log(err);
-			})
-
-		}
-		$scope.algoliaSearch();
-
-		$scope.teas.forEach(function(tea){
-			var noStringArr = $parse(tea.categories);
-
-			$scope.teaArr.push(noStringArr());
-			tea.categories = noStringArr();
-			tea.quantity = 1;
-		});
-
-		$scope.teaArr.forEach(function(teaArray){
-
-			for(var i = 0; i<teaArray.length; i++){
-
-				if(!$scope.final.includes(teaArray[i])){
-					$scope.final.push(teaArray[i]);	
-				}	
-			}
-		});
-	});
+		     	$scope.teas.forEach(function(tea){
+		     		for(var i = 0; i<tea.categories.length; i++){
+		     			if(!$scope.categories.includes(tea.categories[i])){
+		     				$scope.categories.push(tea.categories[i]);
+		     			}
+		     		}
+		     	})
+		     	$scope.categories 
+		}, function searchFailure(err) {
+		     	console.log(err);
+		})
+	}
+	$scope.algoliaSearch();
 
 	$scope.cart = [];
 
@@ -83,6 +67,4 @@ cartApp.controller('CartController', ['$scope', '$http',  '$location', 'passCart
 			$scope.total += (item.price * item.quantity); 
 		});
 	}
-
-
 }]);

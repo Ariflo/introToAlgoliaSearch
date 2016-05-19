@@ -1,12 +1,34 @@
 <div>
 <label class="searchName">Search by Category</label>
 <select ng-model="category">
-      <option disabled selected value> -- Sort Options -- </option>
-	<option ng-repeat="teaCategory in final track by $index " value="{{teaCategory}}">{{teaCategory}}</option>
+      <option enable selected value> Sort Options </option>
+	<option ng-repeat="teaCategory in categories track by $index " value="{{teaCategory}}">{{teaCategory}}</option>
 </select> 
 
-<label class="searchName">Search:</label>
-<input ng-model="query" ng-change="algoliaSearch()">
+<label class="searchName" >Search:</label>
+<input  ng-model="query" ng-change="algoliaSearch()">
+<div data-reactroot="" class="ais-search-box powered-by">
+<!-- react-text: 2 -->
+  Search by
+  <!-- /react-text -->
+    <a class="ais-search-box powered-by-link" href="https://www.algolia.com/?utm_source=instantsearch.js&amp;utm_medium=website&amp;utm_content=community.algolia.com&amp;utm_campaign=poweredby" target="_blank">
+      Algolia
+    </a>
+</div>
+
+<!-- <div class="ais-search-box">
+  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Search for products" role="textbox" spellcheck="false" type="text" value="" class="ais-search-box--input">
+  <div>
+    <div data-reactroot="" class="ais-search-box--powered-by"> -->
+      <!-- react-text: 2 -->
+<!--         Search by -->
+        <!-- /react-text -->
+<!--           <a class="ais-search-box powered-by-link" href="https://www.algolia.com/?utm_source=instantsearch.js&amp;utm_medium=website&amp;utm_content=community.algolia.com&amp;utm_campaign=poweredby" target="_blank">
+            Algolia
+          </a>
+        </div>
+      </div>
+    </div> -->
 
 <button class="pull-right btn btn-danger" ng-click="displayCart()">
    <strong>Checkout</strong> |
@@ -14,66 +36,63 @@
    <span ng-if="cart.length === 0">Empty!</span>
  </button>
 
-<table class=" table table-hover table-bordered">
-  <tr>
-    <th scope="col">Tea</th>
-    <th scope="col">Information
-	    <label class="priceLabel">Sort by Price: </label>
-		<select ng-model="sortByPrice" class="pricer">
-			<option value='-price'>Highest</option>
-			<option value='price'>Lowest</option>
-		</select> 
-    </th>
-  </tr>
+  <div id="hits-container"></div>
+      <table  class="table table-hover table-bordered">
+            <tr>
+              <th scope="col">Tea</th>
+              <th scope="col">Information
+          	    <label class="priceLabel">Sort by Price: </label>
+          		<select ng-model="sortByPrice" class="pricer">
+          			<option value='-price'>Highest</option>
+          			<option value='price'>Lowest</option>
+          		</select> 
+              </th>
+            </tr>
 
-  <tr ng-repeat="tea in hits | orderBy: sortByPrice |  filter: category">
-  	 <td class ="imgData"><img ng-src="{{tea.imageUrl}}"></td>
-  	 <td class ="teaData">
-	  	<h4>{{tea.name}}</h4> 
+            <tr ng-repeat="tea in teas | orderBy: sortByPrice |  filter: category">
+            	 <td class ="imgData"><img ng-src="{{tea.imageUrl}}"></td>
+            	 <td class ="teaData">
+          	  	<h4>{{tea.name}}</h4> 
 
-  	  	<label class="quantityLabel">Quantity</label>
-  	  	<select ng-model="tea.quantity" class="amt">
-  	  		<option value="1">1</option>
-  	  		<option value="2">2</option>
-  	  		<option value="3">3</option>
-  	  		<option value="4">4</option>
-  	  		<option value="5">5</option>
-  	  		<option value="6">6</option>
-  	  		<option value="7">7</option>
-  	  		<option value="8">8</option>
-  	  		<option value="9">9</option>
-  	  		<option value="10">10</option>
-  	  	</select> 
+            	  	<label class="quantityLabel">Quantity</label>
+            	  	<select ng-model="tea.quantity" class="amt">
+            	  		<option value="1">1</option>
+            	  		<option value="2">2</option>
+            	  		<option value="3">3</option>
+            	  		<option value="4">4</option>
+            	  		<option value="5">5</option>
+            	  		<option value="6">6</option>
+            	  		<option value="7">7</option>
+            	  		<option value="8">8</option>
+            	  		<option value="9">9</option>
+            	  		<option value="10">10</option>
+            	  	</select> 
 
-  	  	<mt-bag cart="cart" tea="tea"></mt-bag>
-  	  
-  	  	<div class="teaItem">
-  	  		<label>Price:</label> <p class="data">{{tea.price/100 | currency}} </p>
-  	  	</div>
-  	  	<div class="teaItem">
-	  		<label>Caffine Scale:</label><p class="data">{{tea.caffeineScale}}</p>
-	  	</div>
-	  	<div class="teaItem">
-	  		<label>Ingredients:</label><p class="data">{{tea.ingredients}}</p>
-	  	</div>
-	  	<div class="teaItem">
-	  		<label>Rating:</label><p class="data">{{tea.rating}}</p> 
-	  	</div>
-	  	<div class="teaItem">
-	  		<label>In Stock:</label> <p class="data">{{tea.inStock}}</p>
-	  	</div>
-		<div class="teaItem">
-	  	  	<label >Categories:</label>
-	  	  	<ul ng-repeat = "category in tea.categories">
-	  	  		<li>{{category}}</li>	
-	  	  	</ul>
-  	  	</div>
+            	  	<mt-bag cart="cart" tea="tea"></mt-bag>
+            	  
+            	  	<div class="teaItem">
+            	  		<label>Price:</label> <p class="data">{{tea.price/100 | currency}} </p>
+            	  	</div>
+            	  	<div class="teaItem">
+          	  		<label>Caffine Scale:</label><p class="data">{{tea.caffeineScale}}</p>
+          	  	</div>
+          	  	<div class="teaItem">
+          	  		<label>Ingredients:</label><p class="data">{{tea.ingredients}}</p>
+          	  	</div>
+          	  	<div class="teaItem">
+          	  		<label>Rating:</label><p class="data">{{tea.rating}}</p> 
+          	  	</div>
+          	  	<div class="teaItem">
+          	  		<label>In Stock:</label> <p class="data">{{tea.inStock}}</p>
+          	  	</div>
+          		<div class="teaItem">
+          	  	  	<label >Categories:</label>
+          	  	  	<ul ng-repeat = "category in tea.categories">
+          	  	  		<li>{{category}}</li>	
+          	  	  	</ul>
+            	  	</div>
 
-  	 </td>
-  </tr>
- 
-</table>
-
-
-
+            	 </td>
+            </tr>
+      </table>
 </div>
