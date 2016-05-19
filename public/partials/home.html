@@ -5,7 +5,7 @@
 	<option ng-repeat="teaCategory in final track by $index " value="{{teaCategory}}">{{teaCategory}}</option>
 </select> 
 
-<label class="searchName">Search by name:</label>
+<label class="searchName">Search:</label>
 <input ng-model="query" ng-change="algoliaSearch()">
 
 <button class="pull-right btn btn-danger" ng-click="displayCart()">

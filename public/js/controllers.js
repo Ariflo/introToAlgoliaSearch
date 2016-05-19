@@ -11,6 +11,7 @@ cartApp.controller('HomeController', ['$scope', '$http', '$parse', '$location', 
 
 		var client = algolia.Client('W8I2YD0GJC', '861d0757703675d68f5a0f915072381b');
 		var index = client.initIndex('tea_shop');
+		index.clearCache();
 
 		$scope.algoliaSearch = function (){
 
@@ -20,7 +21,8 @@ cartApp.controller('HomeController', ['$scope', '$http', '$parse', '$location', 
 
 			}, function searchFailure(err) {
 			     	console.log(err);
-			});
+			})
+
 		}
 		$scope.algoliaSearch();
 
