@@ -6,7 +6,7 @@
 </select> 
 
 <label class="searchName">Search by name:</label>
-<input ng-model="searchText">
+<input ng-model="query" ng-change="algoliaSearch()">
 
 <button class="pull-right btn btn-danger" ng-click="displayCart()">
    <strong>Checkout</strong> |
@@ -26,7 +26,7 @@
     </th>
   </tr>
 
-  <tr ng-repeat="tea in teas | orderBy: sortByPrice | filter: searchText | filter: category">
+  <tr ng-repeat="tea in hits | orderBy: sortByPrice |  filter: category">
   	 <td class ="imgData"><img ng-src="{{tea.imageUrl}}"></td>
   	 <td class ="teaData">
 	  	<h4>{{tea.name}}</h4> 

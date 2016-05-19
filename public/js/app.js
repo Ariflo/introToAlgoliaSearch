@@ -1,4 +1,4 @@
-var cartApp = angular.module('cartApp', ['ngRoute', 'ngAnimate', 'ngResource']);
+var cartApp = angular.module('cartApp', ['ngRoute', 'ngAnimate', 'ngResource', 'algoliasearch']);
 
 cartApp.config(function($routeProvider, $locationProvider) {
     $routeProvider

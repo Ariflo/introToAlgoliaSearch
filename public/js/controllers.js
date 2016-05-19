@@ -1,11 +1,29 @@
-cartApp.controller('HomeController', ['$scope', '$http', '$parse', '$location', 'passCartService', function($scope, $http, $parse, $location, passCartService) {
+cartApp.controller('HomeController', ['$scope', '$http', '$parse', '$location', 'passCartService', 'algolia'
+			         ,function($scope, $http, $parse, $location, passCartService, algolia) {
 
 	$http.get('/api/products').then(function(data){
 		$scope.teas = data.data;
 		$scope.teaArr = [];
 		$scope.final = [];
 
-		
+		$scope.query = '';
+		$scope.hits = [];
+
+		var client = algolia.Client('W8I2YD0GJC', '861d0757703675d68f5a0f915072381b');
+		var index = client.initIndex('tea_shop');
+
+		$scope.algoliaSearch = function (){
+
+			index.search($scope.query)
+			.then(function searchSuccess(content) {
+			     	$scope.hits = content.hits;
+
+			}, function searchFailure(err) {
+			     	console.log(err);
+			});
+		}
+		$scope.algoliaSearch();
+
 		$scope.teas.forEach(function(tea){
 			var noStringArr = $parse(tea.categories);
 
