@@ -1,55 +1,37 @@
 <div>
-<label class="searchName">Search by Category</label>
-<select ng-model="category">
-      <option enable selected value> Sort Options </option>
-	<option ng-repeat="teaCategory in categories track by $index " value="{{teaCategory}}">{{teaCategory}}</option>
-</select> 
 
-<label class="searchName" >Search:</label>
-<input  ng-model="query" ng-change="algoliaSearch()">
-<div data-reactroot="" class="ais-search-box powered-by">
-<!-- react-text: 2 -->
-  Search by
-  <!-- /react-text -->
-    <a class="ais-search-box powered-by-link" href="https://www.algolia.com/?utm_source=instantsearch.js&amp;utm_medium=website&amp;utm_content=community.algolia.com&amp;utm_campaign=poweredby" target="_blank">
-      Algolia
-    </a>
-</div>
-
-<!-- <div class="ais-search-box">
-  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Search for products" role="textbox" spellcheck="false" type="text" value="" class="ais-search-box--input">
-  <div>
-    <div data-reactroot="" class="ais-search-box--powered-by"> -->
-      <!-- react-text: 2 -->
-<!--         Search by -->
-        <!-- /react-text -->
-<!--           <a class="ais-search-box powered-by-link" href="https://www.algolia.com/?utm_source=instantsearch.js&amp;utm_medium=website&amp;utm_content=community.algolia.com&amp;utm_campaign=poweredby" target="_blank">
-            Algolia
-          </a>
-        </div>
+      <div class="searchSpace">
+            <input id="searchBox" class="form-control" ng-model="query" ng-change="algoliaSearch()" placeholder="Tea name, Category, Price...">
       </div>
-    </div> -->
+      <div class="powered-by-box">
+              Search powered by
+              <a class="powered-by-link" href="https://www.algolia.com/?utm_source=instantsearch.js&amp;utm_medium=website&amp;utm_content=community.algolia.com&amp;utm_campaign=poweredby" target="_blank">
+                Algolia
+              </a>
+      </div>
 
-<button class="pull-right btn btn-danger" ng-click="displayCart()">
-   <strong>Checkout</strong> |
-   Bag: <span ng-if="cart.length > 0">({{cart.length}})</span>
-   <span ng-if="cart.length === 0">Empty!</span>
- </button>
-
-  <div id="hits-container"></div>
-      <table  class="table table-hover table-bordered">
-            <tr>
+      <table  class="table table-bordered">
+            <tr class="tableHeader">
               <th scope="col">Tea</th>
               <th scope="col">Information
-          	    <label class="priceLabel">Sort by Price: </label>
-          		<select ng-model="sortByPrice" class="pricer">
-          			<option value='-price'>Highest</option>
-          			<option value='price'>Lowest</option>
-          		</select> 
+
+                  <button class="ckout btn btn-danger" ng-click="displayCart()">
+                     <strong>Checkout</strong> |
+                     Bag: <span ng-if="cart.length > 0">({{cart.length}})</span>
+                     <span ng-if="cart.length === 0">Empty!</span>
+                   </button>
+
+                  <div class="priceLabel">
+                	    <label class="priceOptions">Sort by Price: </label>
+                		<select class="priceOptions" ng-model="sortByPrice" >
+                			<option value='-price'>Highest</option>
+                			<option value='price'>Lowest</option>
+                		</select> 
+                  </div>
               </th>
             </tr>
 
-            <tr ng-repeat="tea in teas | orderBy: sortByPrice |  filter: category">
+            <tr class="productLine" ng-repeat="tea in teas | orderBy: sortByPrice |  filter: category" >
             	 <td class ="imgData"><img ng-src="{{tea.imageUrl}}"></td>
             	 <td class ="teaData">
           	  	<h4>{{tea.name}}</h4> 

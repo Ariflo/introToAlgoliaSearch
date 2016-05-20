@@ -3,7 +3,6 @@ cartApp.controller('HomeController', ['$scope', '$http', '$parse', '$location', 
 
 	$scope.query = '';
 	$scope.hits = [];
-	$scope.categories = [];
 
 	var client = algolia.Client('W8I2YD0GJC', '861d0757703675d68f5a0f915072381b');
 	var index = client.initIndex('tea_shop');
@@ -14,15 +13,6 @@ cartApp.controller('HomeController', ['$scope', '$http', '$parse', '$location', 
 		index.search($scope.query)
 		.then(function searchSuccess(content) {
 		     	$scope.teas = content.hits;
-
-		     	$scope.teas.forEach(function(tea){
-		     		for(var i = 0; i<tea.categories.length; i++){
-		     			if(!$scope.categories.includes(tea.categories[i])){
-		     				$scope.categories.push(tea.categories[i]);
-		     			}
-		     		}
-		     	})
-		     	$scope.categories 
 		}, function searchFailure(err) {
 		     	console.log(err);
 		})

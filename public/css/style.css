@@ -1,22 +1,62 @@
-.col-xs-12{
-	background-color: orange;
+html, body{
+	background: #9DC5F5;
+}
+.jumbotron{
+	background-color: #0C1724;
 	color: white;
 	text-align: center;
-	padding: 2em;
-	font-size: 30px;
+	font-size: 3em;
 	float: left;
-	
-	  top: 0;
-	  left: 0;
-	  z-index: 999;
-	  width: 100%;
-	  margin-bottom: 1em;
+	top: 0;
+	margin-bottom: 0;
+	width: 100%;
 }
 
-h1{
-	text-align: center;
-	color: white;
+.headerPhrase {
+	font-family: "Georgia";
+}	
+
+a, a:hover, a:active, a:focus{
+	text-decoration: none;
 }
+
+.searchSpace{
+	display:flex;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
+	margin: auto;	
+	width: 100%;
+	top:0;
+	padding: 2%;
+	background-color: #0C1724;
+}
+
+.powered-by-box{
+	background-color: #0C1724;
+	color: #ffffff;
+	width: 100%;
+	text-align: center;
+	margin:auto;
+	padding-bottom: 1em;
+}
+
+.powered-by-link{
+	padding-left: 3px;
+	display: inline;
+	float: center;
+}
+
+#searchBox{
+	width: 33%;
+	height: auto;
+	border-radius: 5px;
+}
+
+.powered-by-box{
+	float: right;
+}
+
 
 h2{
 	float:left;
@@ -26,9 +66,6 @@ label{
 	display: inline;
 }
 
-.pricer{
-	float: right;
-}
 
 .teaItem{
 	display: block;
@@ -67,9 +104,28 @@ label{
 }
 
 .priceLabel{
-	margin-left: 70%; 
+	display: inline;
+	float: right;
+	padding-right: 5%;
 }
 
 .ordTotal{
 	float:right;
+}
+
+.productLine:hover, .imgData:hover{
+	background: #ADC2DB;
+}
+
+.tableHeader{
+	background: #286CBD;
+}
+
+.ckout{
+	float: right;
+}
+
+.priceOptions{
+	padding-left: .5em;
+	padding-right: .5em;
 }
